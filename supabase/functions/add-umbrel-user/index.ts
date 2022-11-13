@@ -8,7 +8,7 @@ const supabase = createClient(
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
+    return new Response('ok')
   }
 
   const { error } = await supabase.from("umbrel_users").insert({});
@@ -21,6 +21,6 @@ serve(async (req) => {
     JSON.stringify({
     	success: true,
     }),
-    { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+    { headers: { "Content-Type": "application/json" } },
   )
 });
